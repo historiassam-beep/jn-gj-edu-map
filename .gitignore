@@ -1,0 +1,12 @@
+raw/
+work/
+tools/node_modules/
+tools/package-lock.json
+art/*-2048.png
+.claude/
+__pycache__/
+art/.codex-last/
+art/manifest.json
+vworld-key.txt
+art/logo/manifest.json
+art/logo/.codex-last/
