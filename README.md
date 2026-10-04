@@ -29,14 +29,14 @@ python -m http.server 8000      # 그다음 브라우저에서 http://localhost:
 - 학교 카드: 나이스 급식·학사일정 실시간(광주 F10 / 전남 Q10)
 - 위치 자료에 없는 29곳(특수학교 16, 휴교 분교장 13)은 주소의 읍면동 대표점에 놓고 학교 카드에 안내
 
+- 중학교 학교군·중학구 경계 207곳(학구도 2025-09-22)과, 고시(안)의 초·중학교 연결표(`raw/hakgun.json`)로 만든 중학교 추정
+- 도서·벽지 지정 학교 99곳(교육부령 제374호 별표, 2026. 3. 1. 시행; `raw/byeokji.json`)
 - 초등 통학구역 669곳(학구도 2025-09-22, 학교 610/612 연결)과 학구별 0~5세·학생 변화
-- 5년 뒤(2027~2032) 학생 추정: 초등은 학구 인구 비율법, 중학교는 광주 동·서·남·북구 62곳은 학교군표(`raw/hakgun.json`, 2026 배정 시행계획) 기준 같은 학교군 초6 흐름·광산구·전남은 학구도 연결표(`raw/midzones.json`)의 학교군에 가장 가까운 초등학교를 묶는 근사(시군구 흐름과 2배 넘게 어긋나면 시군구 초6 흐름), 고등은 중3 흐름 시나리오
+- 5년 뒤(2027~2032) 학생 추정: 초등은 학구 인구 비율법, 중학교는 학교군·중학구 고시(안, 2026. 10. 1.)의 초·중학교 연결표(`raw/hakgun.json`, 중학교 333곳 연결) 기준 같은 학교군 초6 흐름, 고등은 중3 흐름 시나리오
 
 ### 아직 없는 것 (자료가 없으면 화면에서 자동으로 숨겨짐 → 자료를 넣고 다시 만들면 저절로 나타남)
 | 기능 | 필요한 자료 |
 |---|---|
-| 중학구·학교군 경계, 중학교 추정 정밀화 | 학구도 **중학교학교군** shp → `05b_zones_from_shp.py m` |
-| 도서벽지 지정 | 「도서·벽지 교육진흥법 시행규칙」 별표 → `raw/byeokji.json` |
 | 해발 고도, 학교알리미 공시 | 인터넷 되는 컴퓨터에서 07·10번 스크립트 실행 |
 | 위성 사진·건물 3D | 브이월드 키 → `docs/index.html`의 `VWORLD_KEY`, `VW_DOMAIN` |
 
@@ -54,6 +54,8 @@ node scripts/03_geocode_fallback.js                # 옛 이름·같은 주소·
 node scripts/02_build.js                           # 한 번 더
 python scripts/05b_zones_from_shp.py e <초등학교통학구역.shp>   # (학구 shp가 있을 때)
 python scripts/05b_zones_from_shp.py m <중학교학교군.shp>
+pdftotext -bbox-layout 고시.pdf all.html && python scripts/05c_parse_gosi.py all.html   # 학교군 고시 PDF → raw/gosi_groups.json
+python scripts/05d_link_gosi.py                    # → raw/hakgun.json (학교 번호 연결)
 node scripts/06_population.js                      # 주민등록 인구·학구 연결
 node scripts/08_forecast.js                        # 5년 뒤 학생 추정(추가 패키지 없음)
 python scripts/04_verify.py                        # 원자료 합계와 대조(학생·학급·교원, 불일치면 실패)
