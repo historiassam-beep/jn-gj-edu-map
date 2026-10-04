@@ -839,7 +839,7 @@ body.touring .readme{display:none}
     <button class="ptab" role="tab" data-tab="r" aria-selected="false">시군 비교</button>
   </div>
   <div class="pbody" id="pbody" tabindex="-1"></div>
-  <footer class="site-foot"><span>전남광주교육지도</span><span class="credit">원작 <a href="https://github.com/kimju1416/gb-edu-map" target="_blank" rel="noopener noreferrer">경북교육지도</a> 제작 · </span><a href="https://www.instagram.com/kimju.zip/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @kimju.zip 새 탭에서 열기"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>@kimju.zip</a></footer>
+  <footer class="site-foot"><span>전남광주교육지도 · 제작 히스토리아쌤</span><span class="credit">원작 <a href="https://github.com/kimju1416/gb-edu-map" target="_blank" rel="noopener noreferrer">경북교육지도</a> 제작 · </span><a href="https://www.instagram.com/kimju.zip/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @kimju.zip 새 탭에서 열기"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>@kimju.zip</a></footer>
 </aside>
 
 <div id="map" aria-label="전라남도·광주광역시 교육 지도"></div>
@@ -3689,7 +3689,7 @@ function renderAbout() {
   $('#aboutBox').innerHTML = `<button class="x" data-act="about-x" aria-label="닫기">×</button><h3 id="aboutT">자료와 계산 방법</h3>
   <p>전라남도·광주광역시 초등학교·중학교·고등학교${H.sp ? '·특수학교' : ''}(분교장 포함, 폐교 제외) <b>${fmt(D.schools.length)}곳</b>의 공개 통계를 모았습니다. 유치원, 각종학교, 방송통신중·고는 넣지 않았습니다. 2026년 7월 행정구역 기준으로 광주·전남은 「전남광주통합특별시」이며, 이 지도에서는 광주 자치구를 「광주 동구」처럼 적었습니다.</p>
   ${miss.length ? `<div class="note"><b>준비 중인 자료</b>: ${miss.join(' · ')}.${H.tch ? '' : ' 지금은 KESS 「학교별 학과별 학년별 반별 학생수」를 학교 단위로 합쳐 만든 판입니다.'}</div>` : ''}
-  <h4>원작·크레딧</h4><p>이 지도는 <a href="https://github.com/kimju1416/gb-edu-map" target="_blank" rel="noopener">경북교육지도</a>(제작 <a href="https://www.instagram.com/kimju.zip/" target="_blank" rel="noopener">@kimju.zip</a>)의 코드와 구성을 바탕으로, 전라남도·광주광역시 자료로 다시 만들었습니다. 지표 정의와 계산 방법은 원작을 따릅니다.</p>
+  <h4>원작·크레딧</h4><p>이 지도는 <a href="https://github.com/kimju1416/gb-edu-map" target="_blank" rel="noopener">경북교육지도</a>(제작 <a href="https://www.instagram.com/kimju.zip/" target="_blank" rel="noopener">@kimju.zip</a>)의 코드와 구성을 바탕으로, 전라남도·광주광역시 자료로 다시 만들었습니다. 지표 정의와 계산 방법은 원작을 따릅니다.</p><p>전남광주판 제작: 히스토리아쌤 (전남·광주 자료 연결, 중학교 학교군·도서벽지·학교알리미 공시·마음건강 집계 등).</p>
   <h4>출처</h4><ul>${m.sources.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a> · ${esc(s.date)}</li>`).join('')}
   ${li(D.schools.some((s) => s.disc), '학교알리미 공시: 2026 공시를 학교별로 모은 자료')}
   <li>급식·학사일정: 나이스 교육정보 개방 포털 Open API (학교 카드를 열 때 실시간 조회)</li>
